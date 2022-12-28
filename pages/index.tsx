@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Button } from "../src/core/ui/Button";
+import { EventsCard } from "../src/events/ui/EventsCard";
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Invite people to events" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <EventsCard />
+      </main>
 
       <footer className={styles.footer}></footer>
     </div>

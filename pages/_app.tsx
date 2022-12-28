@@ -5,7 +5,9 @@ import { StyleProvider } from "../src/core/ui/StyleProvider";
 function InviteApp({ Component, pageProps }: AppProps) {
   return (
     <StyleProvider>
-      <Component {...pageProps} />
+      <div>
+        <Component {...pageProps} />
+      </div>
     </StyleProvider>
   );
 }
