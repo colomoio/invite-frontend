@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# invite-frontend
 
-## Getting Started
+# Component Development
 
-First, run the development server:
+To develop a component we use the following pattern
 
-```bash
-npm run dev
-# or
-yarn dev
+## Presentational Component
+
+```tsx
+// src/events/ui/EventCard.tsx
+type EventCardProps = {
+  name: string;
+  description?: string;
+};
+
+export function EventCard(props: EventCardProps) {
+  const { name } = props;
+  const description = props?.description;
+
+  return (
+    <div>
+      <h3>{name}</h3>
+      {description ? <p>description</p> : null}
+    </div>
+  );
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# File Structure
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+    src/
+    |
+    ---- users
+        |
+        |
+        ---- domain // responde: qué define a un usuario?
+        |
+        |
+        ---- use-cases // ejemplos: registrarse, iniciar sesión, cerrar sesión, eliminar cuenta
+        |
+        |
+        ---- ui // todo lo que sea visible para el usuario
+    |
+    ---- events
+        |
+        |
+        ---- domain // responde: modela lo que es un evento (características)
+        |
+        |
+        ---- use-cases // ejemplos: CRUD de evento, CRUD de invitados
+        |
+        |
+        ---- ui
+    |
+    ---- core
+        |
+        |
+        ---- mismas capas que los demás dominios
+        |
+        |
+        ---- infra // relacionado a la infraestructura en la que corre la aplicación (navegador y todos sus componentes)
+```
