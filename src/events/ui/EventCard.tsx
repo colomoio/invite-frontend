@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
-import { CustomInput } from "../../core/ui/CustomInput";
+import { Input } from "../../core/ui/Input";
 
 type EventCardProps = {
   eventName: string;
@@ -96,7 +96,7 @@ export function EventCard(props: EventCardProps) {
           </Box>
         ) : null}
 
-        <CustomInput label="Name" />
+        <Input label="Name" Inputvalue="value" InputonChange={() => {}} />
 
         <Button
           h="3rem"

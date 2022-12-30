@@ -1,27 +1,27 @@
-import { useState, ChangeEvent } from "react";
+import { ChangeEventHandler } from "react";
 
 import {
   FormControl,
-  FormErrorText,
   FormHelperText,
-  Input,
+  FormErrorMessage,
+  Input as ChakraInput,
   InputGroup,
   CardHeader,
-  Heading,
   FormLabel,
 } from "@chakra-ui/react";
 
 type inputProps = {
   label: string;
+  Inputvalue: undefined | string;
+  InputonChange: ChangeEventHandler<HTMLInputElement>;
   type?: string;
   helperText?: string;
   placeholder?: string;
   errorText?: null | string;
 };
 
-export function CustomInput(props: inputProps) {
-  const [input, setInput] = useState("");
-  const { label } = props;
+export function Input(props: inputProps) {
+  const { label, InputonChange, Inputvalue } = props;
   const type = props?.type;
   const placeholder = props?.placeholder;
   const errorText = props?.errorText;
@@ -34,8 +34,6 @@ export function CustomInput(props: inputProps) {
   } else {
     errorBool = false;
   }
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setInput(e.target.value);
 
   return (
     <FormControl isInvalid={errorBool}>
@@ -45,10 +43,10 @@ export function CustomInput(props: inputProps) {
         </FormLabel>
       </CardHeader>
       <InputGroup>
-        <Input
-          value={input}
+        <ChakraInput
+          value={Inputvalue}
           type={type}
-          onChange={handleInputChange}
+          onChange={InputonChange}
           placeholder={placeholder}
           borderColor="black"
           height="3rem"
@@ -60,7 +58,7 @@ export function CustomInput(props: inputProps) {
         />
 
         {errorBool ? (
-          <FormErrorText>{errorText ? errorText : null}</FormErrorText>
+          <FormErrorMessage>{errorText ? errorText : null}</FormErrorMessage>
         ) : (
           <FormHelperText>{helperText ? helperText : null}</FormHelperText>
         )}
