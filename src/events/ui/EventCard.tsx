@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
-import { Input } from "../../core/ui/Input";
+import { FormInput } from "../../core/ui/FormInput";
 
-export type EventCardProps = {
+type EventCardProps = {
   eventName: string;
   imgSrc: string;
   location: string;
@@ -96,7 +96,7 @@ export function EventCard(props: EventCardProps) {
           </Box>
         ) : null}
 
-        <Input label="Name" Inputvalue="value" InputonChange={() => {}} />
+        <FormInput label="Name" Inputvalue="value" InputonChange={() => {}} />
 
         <Button
           h="3rem"

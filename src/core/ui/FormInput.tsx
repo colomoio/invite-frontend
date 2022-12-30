@@ -4,13 +4,13 @@ import {
   FormControl,
   FormHelperText,
   FormErrorMessage,
-  Input as ChakraInput,
   InputGroup,
   CardHeader,
   FormLabel,
+  Input as ChakraInput,
 } from "@chakra-ui/react";
 
-export type InputProps = {
+type InputProps = {
   label: string;
   Inputvalue: undefined | string;
   InputonChange: ChangeEventHandler<HTMLInputElement>;
@@ -20,21 +20,14 @@ export type InputProps = {
   errorText?: null | string;
 };
 
-export function Input(props: InputProps) {
+export function FormInput(props: InputProps) {
   const { label, InputonChange, Inputvalue } = props;
   const type = props?.type;
   const placeholder = props?.placeholder;
   const errorText = props?.errorText;
   const helperText = props?.helperText;
 
-  let errorBool;
-
-  if (errorText) {
-    errorBool = true;
-  } else {
-    errorBool = false;
-  }
-
+  const errorBool = Boolean(errorText);
   return (
     <FormControl isInvalid={errorBool}>
       <CardHeader padding="0rem">
