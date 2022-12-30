@@ -10,7 +10,7 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 
-type inputProps = {
+export type InputProps = {
   label: string;
   Inputvalue: undefined | string;
   InputonChange: ChangeEventHandler<HTMLInputElement>;
@@ -20,7 +20,7 @@ type inputProps = {
   errorText?: null | string;
 };
 
-export function Input(props: inputProps) {
+export function Input(props: InputProps) {
   const { label, InputonChange, Inputvalue } = props;
   const type = props?.type;
   const placeholder = props?.placeholder;

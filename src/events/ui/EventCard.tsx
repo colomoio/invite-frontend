@@ -16,7 +16,7 @@ import {
 import dayjs from "dayjs";
 import { Input } from "../../core/ui/Input";
 
-type EventCardProps = {
+export type EventCardProps = {
   eventName: string;
   imgSrc: string;
   location: string;
