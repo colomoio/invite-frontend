@@ -7,9 +7,6 @@ import {
   Text,
   Image,
   Flex,
-  InputRightElement,
-  Input,
-  InputGroup,
   Button,
   Avatar,
   TagLabel,
@@ -17,23 +14,22 @@ import {
 } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
+import { CustomInput } from "../../core/ui/CustomInput";
 
 type EventCardProps = {
   eventName: string;
   imgSrc: string;
-  ubication: string;
-  timeStamp: number;
+  location: string;
+  timestamp: number;
   guests: number;
   description?: string;
 };
 
-export function EventsCard(props: EventCardProps) {
-  const { eventName, imgSrc, ubication, timeStamp, guests } = props;
+export function EventCard(props: EventCardProps) {
+  const { eventName, imgSrc, location, timestamp, guests } = props;
   const description = props?.description;
 
-  let unixTime = dayjs(timeStamp);
-
-  console.log(unixTime);
+  let unixTime = dayjs(timestamp);
 
   let date = `${unixTime.format("D/M/YYYY")}`;
   let time = `${unixTime.format("HH:mm a")}`;
@@ -86,8 +82,7 @@ export function EventsCard(props: EventCardProps) {
             <Box textAlign="center" marginTop="2.5rem">
               <Heading size="xs">Ubicacion</Heading>
               <Text marginTop=".25rem" fontSize="sm">
-                {ubication}
-                {ubication.split("")[ubication.length - 1] === "." ? null : "."}
+                {location}
               </Text>
             </Box>
           </CardBody>
@@ -97,45 +92,27 @@ export function EventsCard(props: EventCardProps) {
             <Heading size="xs">Descripcion</Heading>
             <Text pt="2" fontSize="sm">
               {description}
-              {description.split("")[ubication.length - 1] === "." ? null : "."}
             </Text>
           </Box>
         ) : null}
 
-        <CardHeader padding="0rem">
-          <Heading size="xs" margin=".5rem ">
-            Nombre
-          </Heading>
-        </CardHeader>
-        <InputGroup>
-          <Input
-            placeholder="EX: Fiesta de Pedrito"
-            borderColor="black"
-            height="3rem"
-            borderRadius="1rem"
-            marginTop=".5rem"
-            focusBorderColor="#8B44EE"
-            _hover={{ borderColor: "none" }}
-            padding="0 2rm 0 1rem"
-          />
-          <InputRightElement
-            width="5rem"
-            justifyContent="end"
-            alignItems="strech"
-          >
-            <Button
-              h="3rem"
-              fontSize="sm"
-              marginTop=".5rem"
-              backgroundColor="#8B44EE"
-              borderRadius="0 1rem 1rem  0"
-              textColor="#F2E3E5"
-              _hover={{ backgroundColor: "#F2E3E5", textColor: "#8B44EE" }}
-            >
-              Crear
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        <CustomInput label="Name" />
+
+        <Button
+          h="3rem"
+          fontSize="sm"
+          marginTop="1rem"
+          border="2px solid #8B44EE"
+          backgroundColor="#8B44EE"
+          borderRadius="1rem"
+          textColor="#F2E3E5"
+          _hover={{
+            backgroundColor: "#F2E3E5",
+            textColor: "#8B44EE",
+          }}
+        >
+          Siguiente
+        </Button>
       </Card>
     </>
   );

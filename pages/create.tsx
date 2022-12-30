@@ -1,13 +1,13 @@
-import { EventsCard } from "../src/events/ui/EventsCard";
+import { EventCard } from "../src/events/ui/EventCard";
 
 export default function CreatePage() {
   return (
     <div>
-      <EventsCard
+      <EventCard
         eventName="Evento"
         imgSrc=""
-        ubication="ciudad, estado"
-        timeStamp={Date.now()}
+        location="ciudad, estado"
+        timestamp={Date.now()}
         guests={15}
         description="describa el etiqueta, tema o el motivo de la fiesta (opcional)"
       />
