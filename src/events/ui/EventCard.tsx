@@ -26,6 +26,7 @@ type EventCardProps = {
 };
 
 export function EventCard(props: EventCardProps) {
+  
   const { eventName, imgSrc, location, timestamp, guests } = props;
   const description = props?.description;
 
@@ -38,7 +39,7 @@ export function EventCard(props: EventCardProps) {
       <Card
         maxW="25rem"
         padding="1rem"
-        margin="auto"
+        margin="1rem auto"
         borderRadius="2rem"
         backgroundColor="#EBD5D8"
       >
@@ -52,7 +53,7 @@ export function EventCard(props: EventCardProps) {
               marginBottom="0.7rem"
               objectPosition="center"
               objectFit="cover"
-              fallbackSrc="https://images.unsplash.com/photo-1616095818012-c386cf5a4c0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=379&q=80"
+              fallbackSrc="https://source.unsplash.com/random/300×300?party"
             />
             <Flex>
               <Tag
@@ -95,9 +96,6 @@ export function EventCard(props: EventCardProps) {
             </Text>
           </Box>
         ) : null}
-
-        <FormInput label="Name" Inputvalue="value" InputonChange={() => {}} />
-
         <Button
           h="3rem"
           fontSize="sm"

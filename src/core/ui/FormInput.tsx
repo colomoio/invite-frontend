@@ -8,12 +8,13 @@ import {
   CardHeader,
   FormLabel,
   Input as ChakraInput,
+  Card,
 } from "@chakra-ui/react";
 
 type InputProps = {
   label: string;
-  Inputvalue: undefined | string;
-  InputonChange: ChangeEventHandler<HTMLInputElement>;
+  value: undefined | string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
   type?: string;
   helperText?: string;
   placeholder?: string;
@@ -21,7 +22,7 @@ type InputProps = {
 };
 
 export function FormInput(props: InputProps) {
-  const { label, InputonChange, Inputvalue } = props;
+  const { label, onChange, value } = props;
   const type = props?.type;
   const placeholder = props?.placeholder;
   const errorText = props?.errorText;
@@ -29,17 +30,18 @@ export function FormInput(props: InputProps) {
 
   const errorBool = Boolean(errorText);
   return (
+    <Card margin={"1rem"} padding={"0 1rem 1rem"}>
     <FormControl isInvalid={errorBool}>
       <CardHeader padding="0rem">
-        <FormLabel size="xs" margin=".5rem">
+        <FormLabel size="xs" margin="0 ">
           {label}
         </FormLabel>
       </CardHeader>
       <InputGroup>
         <ChakraInput
-          value={Inputvalue}
+          value={value}
           type={type}
-          onChange={InputonChange}
+          onChange={onChange}
           placeholder={placeholder}
           borderColor="black"
           height="3rem"
@@ -50,12 +52,14 @@ export function FormInput(props: InputProps) {
           _hover={{ borderColor: "none" }}
         />
 
-        {errorBool ? (
+       
+      </InputGroup> 
+      {errorBool ? (
           <FormErrorMessage>{errorText ? errorText : null}</FormErrorMessage>
         ) : (
           <FormHelperText>{helperText ? helperText : null}</FormHelperText>
         )}
-      </InputGroup>
     </FormControl>
+    </Card>
   );
 }
