@@ -26,7 +26,6 @@ type EventCardProps = {
 };
 
 export function EventCard(props: EventCardProps) {
-  
   const { eventName, imgSrc, location, timestamp, guests } = props;
   const description = props?.description;
 
@@ -39,7 +38,7 @@ export function EventCard(props: EventCardProps) {
       <Card
         maxW="25rem"
         padding="1rem"
-        margin="1rem auto"
+        margin="auto"
         borderRadius="2rem"
         backgroundColor="#EBD5D8"
       >

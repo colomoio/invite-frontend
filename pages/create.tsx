@@ -1,11 +1,10 @@
-import {CardForm} from "../src/events/ui/CardForm";
+import { EventInputsCard } from "../src/events/ui/EventInputsCard";
 import { EventCard } from "../src/events/ui/EventCard";
 
 export default function CreatePage() {
   return (
     <div>
-      <CardForm 
-      />
+      <EventInputsCard />
       <EventCard
         eventName="Evento"
         imgSrc=""
