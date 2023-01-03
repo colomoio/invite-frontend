@@ -52,7 +52,7 @@ export function EventCard(props: EventCardProps) {
               marginBottom="0.7rem"
               objectPosition="center"
               objectFit="cover"
-              fallbackSrc="https://source.unsplash.com/random/300×300?party"
+              fallbackSrc="https://source.unsplash.com/random/300x300?party"
             />
             <Flex>
               <Tag
@@ -80,7 +80,6 @@ export function EventCard(props: EventCardProps) {
               <Text fontSize="xs">{time}</Text>
             </Box>
             <Box textAlign="center" marginTop="2.5rem">
-              <Heading size="xs">Ubicacion</Heading>
               <Text marginTop=".25rem" fontSize="sm">
                 {location}
               </Text>
@@ -95,22 +94,23 @@ export function EventCard(props: EventCardProps) {
             </Text>
           </Box>
         ) : null}
-        <Button
-          h="3rem"
-          fontSize="sm"
-          marginTop="1rem"
-          border="2px solid #8B44EE"
-          backgroundColor="#8B44EE"
-          borderRadius="1rem"
-          textColor="#F2E3E5"
-          _hover={{
-            backgroundColor: "#F2E3E5",
-            textColor: "#8B44EE",
-          }}
-        >
-          Siguiente
-        </Button>
       </Card>
+      <Button
+        width="20rem"
+        h="3rem"
+        display="block"
+        border="2px solid #8B44EE"
+        backgroundColor="#8B44EE"
+        borderRadius="1rem"
+        textColor="#F2E3E5"
+        margin="1rem auto"
+        _hover={{
+          backgroundColor: "#F2E3E5",
+          textColor: "#8B44EE",
+        }}
+      >
+        Siguiente
+      </Button>
     </>
   );
 }
