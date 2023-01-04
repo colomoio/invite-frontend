@@ -46,11 +46,11 @@ export function FormInput(props: InputProps) {
             onChange={onChange}
             placeholder={placeholder}
             borderColor="black"
-            height="3rem"
-            borderRadius="1rem"
-            textColor="#8B44EE"
+            h="3rem"
+            borderRadius="2xl"
+            textColor="purple.600"
             marginTop=".5rem"
-            focusBorderColor="#8B44EE"
+            focusBorderColor="purple.600"
             _hover={{ borderColor: "none" }}
           />
         </InputGroup>

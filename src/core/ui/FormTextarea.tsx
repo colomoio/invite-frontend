@@ -39,12 +39,12 @@ export default function FormTextarea(props: TextareaProps) {
           onChange={onChange}
           placeholder={placeholder}
           resize="none"
-          minHeight="5.5rem"
+          minH="5.5rem"
           borderColor="black"
-          borderRadius="1rem"
-          textColor="#8B44EE"
+          borderRadius="2xl"
+          textColor="purple.600"
           marginTop=".5rem"
-          focusBorderColor="#8B44EE"
+          focusBorderColor="purple.600"
         />
         {errorBool ? (
           <FormErrorMessage>{errorText ? errorText : null}</FormErrorMessage>

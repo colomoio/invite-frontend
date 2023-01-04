@@ -23,7 +23,7 @@ export function EventInputsCard() {
   }
 
   return (
-    <Card margin="1rem" backgroundColor="#F2E3E5">
+    <Card margin="1rem" bg="pink.100">
       <form>
         <FormInput
           label="Nombre de evento"

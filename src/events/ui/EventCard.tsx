@@ -38,8 +38,8 @@ export function EventCard(props: EventCardProps) {
         maxW="25rem"
         padding="1rem"
         margin="auto"
-        borderRadius="2rem"
-        backgroundColor="#EBD5D8"
+        borderRadius="3xl"
+        bg="pink.100"
       >
         <Flex>
           <Flex direction="column" align="center" justify="flex-start">
@@ -56,11 +56,11 @@ export function EventCard(props: EventCardProps) {
             <Flex>
               <Tag
                 height="2.5rem"
-                backgroundColor="#F2E3E5"
+                bg="pink.200"
                 borderRadius="full"
                 padding=".5rem"
               >
-                <Avatar boxSize="7" mr="1rem" />
+                <Avatar boxSize="7" mr=".5rem" />
                 <TagLabel>{guests}</TagLabel>
               </Tag>
             </Flex>
@@ -72,7 +72,7 @@ export function EventCard(props: EventCardProps) {
               </Heading>
             </CardHeader>
 
-            <Box textAlign="center" textColor="#4F10A8">
+            <Box textAlign="center" textColor="purple.700">
               <Text marginTop=".25rem" fontSize="xs">
                 {date}
               </Text>
@@ -98,14 +98,15 @@ export function EventCard(props: EventCardProps) {
         width="20rem"
         h="3rem"
         display="block"
-        border="2px solid #8B44EE"
-        backgroundColor="#8B44EE"
-        borderRadius="1rem"
-        textColor="#F2E3E5"
+        border="2px solid"
+        borderColor="purple.600"
+        bg="purple.600"
+        borderRadius="2xl"
+        textColor="pink.50"
         margin="1rem auto"
         _hover={{
-          backgroundColor: "#F2E3E5",
-          textColor: "#8B44EE",
+          bg: "pink.50",
+          textColor: "purple.600",
         }}
       >
         Siguiente
