@@ -8,8 +8,9 @@ import {
   CardHeader,
   FormLabel,
   Input,
-  Card,
 } from "@chakra-ui/react";
+
+import { FormBox } from "./FormBox";
 
 export type InputProps = {
   label: string;
@@ -29,8 +30,9 @@ export function FormInput(props: InputProps) {
   const helperText = props?.helperText;
 
   const errorBool = Boolean(errorText);
+
   return (
-    <Card margin={"1rem"} padding={"1rem"} backgroundColor="white">
+    <FormBox>
       <FormControl isInvalid={errorBool}>
         <CardHeader padding="0rem">
           <FormLabel size="xs" margin="0 ">
@@ -58,6 +60,6 @@ export function FormInput(props: InputProps) {
           <FormHelperText>{helperText ? helperText : null}</FormHelperText>
         )}
       </FormControl>
-    </Card>
+    </FormBox>
   );
 }

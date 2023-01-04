@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
-import { FormInput } from "../../core/ui/FormInput";
 
 type EventCardProps = {
   eventName: string;

@@ -1,5 +1,5 @@
 import { Card } from "@chakra-ui/react";
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FormInput } from "../../core/ui/FormInput";
 import FormTextarea from "../../core/ui/FormTextarea";
 

@@ -1,5 +1,4 @@
 import {
-  Card,
   CardHeader,
   FormControl,
   FormErrorMessage,
@@ -8,12 +7,12 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import React, { ChangeEventHandler } from "react";
+import { FormBox } from "./FormBox";
 
 export type TextareaProps = {
   label: string;
   value: undefined | string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
-  type?: string;
   helperText?: string;
   placeholder?: string;
   errorText?: null | string;
@@ -21,7 +20,6 @@ export type TextareaProps = {
 
 export default function FormTextarea(props: TextareaProps) {
   const { label, onChange, value } = props;
-  const type = props?.type;
   const placeholder = props?.placeholder;
   const errorText = props?.errorText;
   const helperText = props?.helperText;
@@ -29,7 +27,7 @@ export default function FormTextarea(props: TextareaProps) {
   const errorBool = Boolean(errorText);
 
   return (
-    <Card margin={"1rem"} padding={"1rem"} backgroundColor="white">
+    <FormBox>
       <FormControl isInvalid={errorBool}>
         <CardHeader padding="0rem">
           <FormLabel size="xs" margin="0 ">
@@ -54,6 +52,6 @@ export default function FormTextarea(props: TextareaProps) {
           <FormHelperText>{helperText ? helperText : null}</FormHelperText>
         )}
       </FormControl>
-    </Card>
+    </FormBox>
   );
 }
