@@ -1,30 +1,25 @@
-import { ChangeEventHandler } from "react";
-
 import {
-  FormControl,
-  FormHelperText,
-  FormErrorMessage,
-  InputGroup,
   CardHeader,
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
   FormLabel,
-  Input,
+  Textarea,
 } from "@chakra-ui/react";
-
+import React, { ChangeEventHandler } from "react";
 import { FormBox } from "./FormBox";
 
-export type InputProps = {
+export type TextareaProps = {
   label: string;
   value: undefined | string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  type?: string;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
   helperText?: string;
   placeholder?: string;
   errorText?: null | string;
 };
 
-export function FormInput(props: InputProps) {
+export default function FormTextarea(props: TextareaProps) {
   const { label, onChange, value } = props;
-  const type = props?.type;
   const placeholder = props?.placeholder;
   const errorText = props?.errorText;
   const helperText = props?.helperText;
@@ -39,21 +34,18 @@ export function FormInput(props: InputProps) {
             {label}
           </FormLabel>
         </CardHeader>
-        <InputGroup>
-          <Input
-            value={value}
-            type={type}
-            onChange={onChange}
-            placeholder={placeholder}
-            borderColor="black"
-            h="3rem"
-            borderRadius="2xl"
-            textColor="purple.600"
-            marginTop=".5rem"
-            focusBorderColor="purple.600"
-            _hover={{ borderColor: "none" }}
-          />
-        </InputGroup>
+        <Textarea
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          resize="none"
+          minH="5.5rem"
+          borderColor="black"
+          borderRadius="2xl"
+          textColor="purple.600"
+          marginTop=".5rem"
+          focusBorderColor="purple.600"
+        />
         {errorBool ? (
           <FormErrorMessage>{errorText ? errorText : null}</FormErrorMessage>
         ) : (

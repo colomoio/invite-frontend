@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
-import { FormInput } from "../../core/ui/FormInput";
 
 type EventCardProps = {
   eventName: string;
@@ -39,8 +38,8 @@ export function EventCard(props: EventCardProps) {
         maxW="25rem"
         padding="1rem"
         margin="auto"
-        borderRadius="2rem"
-        backgroundColor="#EBD5D8"
+        borderRadius="3xl"
+        bg="pink.100"
       >
         <Flex>
           <Flex direction="column" align="center" justify="flex-start">
@@ -52,16 +51,16 @@ export function EventCard(props: EventCardProps) {
               marginBottom="0.7rem"
               objectPosition="center"
               objectFit="cover"
-              fallbackSrc="https://images.unsplash.com/photo-1616095818012-c386cf5a4c0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=379&q=80"
+              fallbackSrc="https://source.unsplash.com/random/300x300?party"
             />
             <Flex>
               <Tag
                 height="2.5rem"
-                backgroundColor="#F2E3E5"
+                bg="pink.200"
                 borderRadius="full"
                 padding=".5rem"
               >
-                <Avatar boxSize="7" mr="1rem" />
+                <Avatar boxSize="7" mr=".5rem" />
                 <TagLabel>{guests}</TagLabel>
               </Tag>
             </Flex>
@@ -73,14 +72,13 @@ export function EventCard(props: EventCardProps) {
               </Heading>
             </CardHeader>
 
-            <Box textAlign="center" textColor="#4F10A8">
+            <Box textAlign="center" textColor="purple.700">
               <Text marginTop=".25rem" fontSize="xs">
                 {date}
               </Text>
               <Text fontSize="xs">{time}</Text>
             </Box>
             <Box textAlign="center" marginTop="2.5rem">
-              <Heading size="xs">Ubicacion</Heading>
               <Text marginTop=".25rem" fontSize="sm">
                 {location}
               </Text>
@@ -95,25 +93,24 @@ export function EventCard(props: EventCardProps) {
             </Text>
           </Box>
         ) : null}
-
-        <FormInput label="Name" Inputvalue="value" InputonChange={() => {}} />
-
-        <Button
-          h="3rem"
-          fontSize="sm"
-          marginTop="1rem"
-          border="2px solid #8B44EE"
-          backgroundColor="#8B44EE"
-          borderRadius="1rem"
-          textColor="#F2E3E5"
-          _hover={{
-            backgroundColor: "#F2E3E5",
-            textColor: "#8B44EE",
-          }}
-        >
-          Siguiente
-        </Button>
       </Card>
+      <Button
+        width="20rem"
+        h="3rem"
+        display="block"
+        border="2px solid"
+        borderColor="purple.600"
+        bg="purple.600"
+        borderRadius="2xl"
+        textColor="pink.50"
+        margin="1rem auto"
+        _hover={{
+          bg: "pink.50",
+          textColor: "purple.600",
+        }}
+      >
+        Siguiente
+      </Button>
     </>
   );
 }
