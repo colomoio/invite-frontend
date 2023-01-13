@@ -16,9 +16,6 @@ import {
   type AuthContextType,
 } from "../../../users/ui/AuthProvider";
 
-/**
- *
- */
 function renderWithAuth(children: ReactNode, initialState: AuthContextType) {
   return (
     <AuthContext.Provider value={initialState}>{children}</AuthContext.Provider>
