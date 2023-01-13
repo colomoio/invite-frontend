@@ -1,6 +1,7 @@
 import { EventInputsCard } from "../src/events/ui/EventInputsCard";
 import { EventCard } from "../src/events/ui/EventCard";
 import { ChangeEvent, useState } from "react";
+import { Layout } from "../src/core/ui/Layout";
 
 export default function CreatePage() {
   const [imgSrc, setImgSrc] = useState("");
@@ -16,7 +17,7 @@ export default function CreatePage() {
   }
 
   return (
-    <>
+    <Layout>
       <EventInputsCard />
       <EventCard
         eventName="Evento"
@@ -27,6 +28,6 @@ export default function CreatePage() {
         guests={15}
         description="describa el etiqueta, tema o el motivo de la fiesta (opcional)"
       />
-    </>
+    </Layout>
   );
 }
