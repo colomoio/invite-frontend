@@ -37,7 +37,8 @@ export function Navbar() {
             onClick={isOpen ? onClose : onOpen}
             display={["inline", "none"]}
             textColor="white"
-            ml="1rem"
+            boxSize="1.25rem"
+            ml="1.25rem"
           />
         </Flex>
 
