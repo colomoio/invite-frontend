@@ -1,5 +1,6 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { FormInput } from "../../core/ui/FormInput";
+import { useSignUpForm } from "./useSignUpForm";
 
 /**
  * @TODO
@@ -18,28 +19,42 @@ import { FormInput } from "../../core/ui/FormInput";
  * @TOMORROW: Talk about components in Chakra UI
  */
 export function SignUpForm() {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-  }
+  const { form, setForm, handleSubmit } = useSignUpForm();
 
   return (
-    <Stack as="form">
-      <FormInput
-        label="Email"
-        type="email"
-        name="email"
-        placeholder="fun@party.com"
-      />
-      {/* <label htmlFor="email">Email</label>
-      <input type="email" name="email" id="email" required /> */}
-      <label htmlFor="password">Password</label>
-      <input type="password" name="password" required />
-      <label htmlFor="confirm-password">Confirm Password</label>
-      <input type="password" name="confirm-password" required />
-      <label htmlFor="nickname">Nickname</label>
-      <input type="text" name="nickname" id="nickname" required />
-      <Button type="submit">Sign Up</Button>
-    </Stack>
+    <form onSubmit={handleSubmit}>
+      <Stack>
+        <FormInput
+          label="Email"
+          type="email"
+          name="email"
+          placeholder="fun@party.com"
+          value={form.email}
+          onChange={setForm.setEmail}
+        />
+        <FormInput
+          label="Nickname"
+          type="text"
+          name="nickname"
+          value={form.nickname}
+          onChange={setForm.setNickname}
+        />
+        <FormInput
+          label="Password"
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={setForm.setPassword}
+        />
+        <FormInput
+          label="Confirm Password"
+          type="password"
+          name="confirmPassword"
+          value={form.passwordConfirmation}
+          onChange={setForm.setPasswordConfirmation}
+        />
+        <Button type="submit">Sign Up</Button>
+      </Stack>
+    </form>
   );
 }
