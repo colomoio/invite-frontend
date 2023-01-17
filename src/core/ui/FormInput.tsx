@@ -5,46 +5,45 @@ import {
   FormHelperText,
   FormErrorMessage,
   InputGroup,
-  CardHeader,
   FormLabel,
   Input,
+  type InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
 
 import { FormBox } from "./FormBox";
 
-export type InputProps = {
+type HelperTextProps = string | null;
+export type InputProps = ChakraInputProps & {
   label: string;
-  value: undefined | string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  type?: string;
-  helperText?: string;
-  placeholder?: string;
-  errorText?: null | string;
+  name: string;
+  helperText?: HelperTextProps;
+  errorText?: HelperTextProps;
 };
 
 export function FormInput(props: InputProps) {
-  const { label, onChange, value } = props;
-  const type = props?.type;
-  const placeholder = props?.placeholder;
-  const errorText = props?.errorText;
-  const helperText = props?.helperText;
+  const { label, name, helperText, errorText, ...inputProps } = props;
 
-  const errorBool = Boolean(errorText);
+  /**
+   * @IDEA: Should we cover JSX.Element as well?
+   */
+  const hasError = typeof errorText === "string" && errorText.length > 0;
+
+  const hasHelperText = typeof helperText === "string" && helperText.length > 0;
+  const helperNode = hasHelperText ? (
+    <FormHelperText>{helperText}</FormHelperText>
+  ) : null;
 
   return (
     <FormBox>
-      <FormControl isInvalid={errorBool}>
-        <CardHeader padding="0rem">
-          <FormLabel size="xs" margin="0 ">
-            {label}
-          </FormLabel>
-        </CardHeader>
+      <FormControl isInvalid={hasError}>
+        <FormLabel size="xs" margin="0" htmlFor={name}>
+          {label}
+        </FormLabel>
         <InputGroup>
           <Input
-            value={value}
-            type={type}
-            onChange={onChange}
-            placeholder={placeholder}
+            {...inputProps}
+            name={name}
+            id={name}
             borderColor="black"
             h="3rem"
             borderRadius="2xl"
@@ -54,10 +53,10 @@ export function FormInput(props: InputProps) {
             _hover={{ borderColor: "none" }}
           />
         </InputGroup>
-        {errorBool ? (
-          <FormErrorMessage>{errorText ? errorText : null}</FormErrorMessage>
+        {hasError ? (
+          <FormErrorMessage>{errorText}</FormErrorMessage>
         ) : (
-          <FormHelperText>{helperText ? helperText : null}</FormHelperText>
+          helperNode
         )}
       </FormControl>
     </FormBox>

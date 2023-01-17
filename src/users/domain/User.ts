@@ -1,19 +1,25 @@
 export type UserType = {
   id?: string;
-  firstName: string;
-  lastName: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
   nickname: string;
 };
 
+class UserCreationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "UserCreationError";
+  }
+}
+
 export function validateUser(user: UserType) {
-  if (!user.firstName) {
-    throw new Error("First name is required");
-  }
-  if (!user.lastName) {
-    throw new Error("Last name is required");
-  }
   if (!user.nickname) {
-    throw new Error("Nickname is required");
+    throw new UserCreationError("Email is required");
+  }
+
+  if (!user.email) {
+    throw new UserCreationError("Nickname is required");
   }
 }
 
@@ -22,7 +28,10 @@ export const User = (props: UserType) => {
 
   return {
     ...props,
-    get fullName() {
+    getFullName() {
+      if (!props.firstName || !props.lastName) {
+        return props.nickname;
+      }
       return `${props.firstName} ${props.lastName}`;
     },
   };
