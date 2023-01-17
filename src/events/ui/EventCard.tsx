@@ -45,7 +45,9 @@ export function EventCard(props: EventCardProps) {
         padding="1rem"
         margin="auto"
         borderRadius="3xl"
-        bg="pink.100"
+        bg="white"
+        border="4px solid"
+        borderColor="purple.200"
       >
         <Flex>
           <Flex direction="column" align="center" justify="flex-start">
@@ -93,7 +95,7 @@ export function EventCard(props: EventCardProps) {
             <Flex>
               <Tag
                 height="2.5rem"
-                bg="pink.200"
+                bg="gray.200"
                 borderRadius="full"
                 padding=".5rem"
               >
