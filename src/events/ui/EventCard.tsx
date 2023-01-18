@@ -45,7 +45,9 @@ export function EventCard(props: EventCardProps) {
         padding="1rem"
         margin="auto"
         borderRadius="3xl"
-        bg="pink.100"
+        bg="white"
+        border="4px solid"
+        borderColor="purple.200"
       >
         <Flex>
           <Flex direction="column" align="center" justify="flex-start">
@@ -93,7 +95,7 @@ export function EventCard(props: EventCardProps) {
             <Flex>
               <Tag
                 height="2.5rem"
-                bg="pink.200"
+                bg="gray.200"
                 borderRadius="full"
                 padding=".5rem"
               >
@@ -133,16 +135,16 @@ export function EventCard(props: EventCardProps) {
       </Card>
       <Button
         width="20rem"
-        h="3rem"
+        h="3.25rem"
         display="block"
-        border="2px solid"
+        border=".25rem solid"
         borderColor="purple.600"
         bg="purple.600"
         borderRadius="2xl"
-        textColor="pink.50"
+        textColor="white"
         margin="1rem auto"
         _hover={{
-          bg: "pink.50",
+          bg: "white",
           textColor: "purple.600",
         }}
       >

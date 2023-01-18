@@ -1,4 +1,11 @@
-import { Flex, useDisclosure, Stack, Link, Heading } from "@chakra-ui/react";
+import {
+  Flex,
+  useDisclosure,
+  Stack,
+  Link,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 export function Navbar() {
@@ -7,38 +14,45 @@ export function Navbar() {
   return (
     <nav>
       <Flex
-        py={2}
-        px={4}
+        p=".5rem 1rem .5rem .5rem"
         direction={["column", "row"]}
         justify="space-between"
-        bg="pink.100"
+        bg="purple.600"
         borderRadius="0 0 1.5rem 1.5rem"
         transition="3ms"
       >
-        <Flex alignItems="center" wrap="wrap">
-          <Flex flexGrow={1} justify="center">
-            <Heading textColor="purple.600" ml={[4, 0]}>
-              Event App
-            </Heading>
-          </Flex>
+        <Flex alignItems="center" wrap="wrap" justify="space-between">
+          <Image
+            borderRadius="full"
+            boxSize="2.5rem"
+            src="https://bit.ly/dan-abramov"
+            alt="app-icon"
+          />
+
+          <Heading ml={[isOpen ? "0" : "0", "2rem"]} textColor="white">
+            Event App
+          </Heading>
+
           <HamburgerIcon
             onClick={isOpen ? onClose : onOpen}
             display={["inline", "none"]}
-            textColor="purple.600"
+            textColor="white"
+            boxSize="1.25rem"
+            ml="1.25rem"
           />
         </Flex>
 
         <Flex
           justifyContent={[isOpen ? "center" : "none", "center"]}
           display={[isOpen ? "flex" : "none", "flex"]}
-          bg="pink.100"
+          bg="purple.600"
         >
           <Stack align="center" direction={["column", "row"]}>
             <Link
               marginTop={[isOpen ? ".5rem" : "none", "0"]}
               fontSize="lg"
               fontWeight="medium"
-              textColor="purple.600"
+              textColor="white"
               href="/"
               _hover={{
                 transform: "scale(1.1)",
@@ -50,7 +64,7 @@ export function Navbar() {
             <Link
               fontSize="lg"
               fontWeight="medium"
-              textColor="purple.600"
+              textColor="white"
               href="/create"
               _hover={{
                 transform: "scale(1.1)",
