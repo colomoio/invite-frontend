@@ -18,16 +18,18 @@ export default function CreatePage() {
 
   return (
     <Layout>
-      <EventInputsCard />
-      <EventCard
-        eventName="Evento"
-        imgSrc={imgSrc}
-        uploadImage={uploadImage}
-        location="ciudad, estado"
-        timestamp={Date.now()}
-        guests={15}
-        description="describa el etiqueta, tema o el motivo de la fiesta (opcional)"
-      />
+      <main>
+        <EventInputsCard />
+        <EventCard
+          eventName="Evento"
+          imgSrc={imgSrc}
+          uploadImage={uploadImage}
+          location="ciudad, estado"
+          timestamp={Date.now()}
+          guests={15}
+          description="describa el etiqueta, tema o el motivo de la fiesta (opcional)"
+        />
+      </main>
     </Layout>
   );
 }

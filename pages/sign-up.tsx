@@ -5,9 +5,9 @@ import { SignUpForm } from "../src/users/ui/SignUpForm";
 export default function SignUpPage() {
   return (
     <Layout>
-      <Box as="main" p="1rem">
-        <Box mb="2rem">
-          <Text as="h1" fontSize="2xl">
+      <Box as="main" maxW="50rem" mx="auto">
+        <Box mb="1rem" ml="1rem">
+          <Text as="h1" fontSize="2xl" fontWeight="bold">
             Sign Up
           </Text>
         </Box>
