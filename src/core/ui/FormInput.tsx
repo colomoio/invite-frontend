@@ -1,5 +1,3 @@
-import { ChangeEventHandler } from "react";
-
 import {
   FormControl,
   FormHelperText,
@@ -9,18 +7,19 @@ import {
   Input,
   type InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
+import { forwardRef, Ref } from "react";
 
 import { FormBox } from "./FormBox";
 
 type HelperTextProps = string | null;
 export type InputProps = ChakraInputProps & {
   label: string;
-  name: string;
+  name?: string;
   helperText?: HelperTextProps;
   errorText?: HelperTextProps;
 };
 
-export function FormInput(props: InputProps) {
+function FormInputComponent(props: InputProps, ref: Ref<HTMLInputElement>) {
   const { label, name, helperText, errorText, ...inputProps } = props;
 
   /**
@@ -41,9 +40,10 @@ export function FormInput(props: InputProps) {
         </FormLabel>
         <InputGroup>
           <Input
-            {...inputProps}
             name={name}
             id={name}
+            ref={ref}
+            {...inputProps}
             borderColor="black"
             h="3rem"
             borderRadius="2xl"
@@ -62,3 +62,5 @@ export function FormInput(props: InputProps) {
     </FormBox>
   );
 }
+
+export const FormInput = forwardRef(FormInputComponent);

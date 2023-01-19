@@ -6,7 +6,7 @@ export const userRepository = {
   create: async (user: any) => {
     const res = await rest.post("/users", { body: user });
     const json = await res.json();
-    const rawUser = readDoc(json.body);
+    const rawUser = readDoc(json);
     const createdUser = User(rawUser);
 
     return createdUser;

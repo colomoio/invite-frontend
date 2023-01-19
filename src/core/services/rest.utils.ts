@@ -4,5 +4,6 @@ export type RestResponseType<RESOURCE = any> = {
 };
 
 export function readDoc<R = any>(restResponse: RestResponseType<R>) {
+  console.log("tona-restResponse", restResponse);
   return restResponse.doc;
 }

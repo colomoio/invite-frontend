@@ -1,4 +1,11 @@
-import { Button, Stack } from "@chakra-ui/react";
+import {
+  Button,
+  Stack,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
 import { FormInput } from "../../core/ui/FormInput";
 import { useSignUpForm } from "./useSignUpForm";
 
@@ -6,9 +13,9 @@ import { useSignUpForm } from "./useSignUpForm";
  * @TODO
  * 1. Add validation for each field
  *  - Email
+ *  - Nickname (min 1 chars)
  *  - Password (min 8 chars)
  *  - Confirm Password (matches password)
- *  - Nickname (min 1 chars)
  *  - Submit button is disabled until all fields are valid
  *  - Show error messages for each field
  * 2. Add a submit handler
@@ -19,42 +26,55 @@ import { useSignUpForm } from "./useSignUpForm";
  * @TOMORROW: Talk about components in Chakra UI
  */
 export function SignUpForm() {
-  const { form, setForm, handleSubmit } = useSignUpForm();
+  const { handleSubmit, fields, formErrors, isSubmitting, hasError } =
+    useSignUpForm();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack>
-        <FormInput
-          label="Email"
-          type="email"
-          name="email"
-          placeholder="fun@party.com"
-          value={form.email}
-          onChange={setForm.setEmail}
-        />
-        <FormInput
-          label="Nickname"
-          type="text"
-          name="nickname"
-          value={form.nickname}
-          onChange={setForm.setNickname}
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          name="password"
-          value={form.password}
-          onChange={setForm.setPassword}
-        />
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          name="confirmPassword"
-          value={form.passwordConfirmation}
-          onChange={setForm.setPasswordConfirmation}
-        />
-        <Button type="submit">Sign Up</Button>
-      </Stack>
-    </form>
+    <>
+      {hasError ? (
+        <Alert status="error">
+          <AlertIcon />
+          <AlertTitle>Network Error!</AlertTitle>
+          <AlertDescription>
+            Cannot post form data, click &quot;Sign Up&quot; to try again
+          </AlertDescription>
+        </Alert>
+      ) : null}
+      <form onSubmit={handleSubmit}>
+        <Stack>
+          <FormInput
+            label="Email"
+            type="email"
+            errorText={formErrors.email}
+            {...fields.email}
+          />
+          <FormInput
+            label="Nickname"
+            type="text"
+            errorText={formErrors.nickname}
+            {...fields.nickname}
+          />
+          <FormInput
+            label="Password"
+            type="password"
+            errorText={formErrors.password}
+            {...fields.password}
+          />
+          <FormInput
+            label="Confirm Password"
+            type="password"
+            errorText={formErrors.confirmPassword}
+            {...fields.confirmPassword}
+          />
+          <Button
+            type="submit"
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+          >
+            Sign Up
+          </Button>
+        </Stack>
+      </form>
+    </>
   );
 }

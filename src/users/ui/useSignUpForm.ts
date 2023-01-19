@@ -1,6 +1,5 @@
-// email, password, passwordConfirmation, firstName, lastName, nickname
-
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
 import { createUser } from "../use-cases/createUser";
 
 function inputSetter(setter: React.Dispatch<React.SetStateAction<string>>) {
@@ -10,57 +9,56 @@ function inputSetter(setter: React.Dispatch<React.SetStateAction<string>>) {
 }
 
 export function useSignUpForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "error" | "ok">(
+    "idle"
+  );
+  const {
+    register,
+    handleSubmit: hookOnSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const form = {
-    email,
-    password,
-    passwordConfirmation,
-    firstName,
-    lastName,
-    nickname,
+  const fields = useMemo(
+    () => ({
+      email: register("email", { required: true }),
+      password: register("password", { required: true }),
+      confirmPassword: register("confirmPassword", { required: true }),
+      nickname: register("nickname", { required: true }),
+    }),
+    [register]
+  );
+
+  /**
+   * @TODO: find granular way to handle errors and display them correctly
+   */
+  const formErrors = {
+    email: errors?.email && "Email is required",
+    password: errors?.password && "Password is required",
+    confirmPassword: errors?.confirmPassword && "Confirm password is required",
+    nickname: errors?.nickname && "Nickname is required",
   };
 
-  const setForm = {
-    setEmail: inputSetter(setEmail),
-    setPassword: inputSetter(setPassword),
-    setPasswordConfirmation: inputSetter(setPasswordConfirmation),
-    setFirstName: inputSetter(setFirstName),
-    setLastName: inputSetter(setLastName),
-    setNickname: inputSetter(setNickname),
-  };
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function onSubmit(data: Parameters<typeof createUser>[0]) {
     setStatus("loading");
-    const formData = new FormData(event.currentTarget);
     try {
-      const user = await createUser({
-        email: formData.get("email") as string,
-        password: formData.get("password") as string,
-        passwordConfirmation: formData.get("confirmPassword") as string,
-        nickname: formData.get("nickname") as string,
-      });
-      debugger;
+      const user = await createUser(data);
       setStatus("idle");
     } catch (error) {
+      console.log("tona-error", error);
       const networkError = error as { status: number };
-      if (networkError?.status === 409) {
-        setStatus("error");
+      setStatus("error");
+      if (networkError?.status > 400) {
         return;
       }
     }
   }
 
   return {
-    form,
-    setForm,
-    handleSubmit,
+    fields,
+    formErrors,
+    handleSubmit: hookOnSubmit(onSubmit),
+    isSubmitting: status === "loading",
+    isSubmitted: status === "idle",
+    hasError: status === "error",
   };
 }

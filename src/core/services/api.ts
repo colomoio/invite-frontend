@@ -1,5 +1,4 @@
 export function post(path: string, { body }: any) {
-  debugger;
   return fetch(path, {
     method: "POST",
     headers: {

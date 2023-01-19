@@ -11,6 +11,7 @@ import { FormBox } from "./FormBox";
 
 export type TextareaProps = {
   label: string;
+  name: string;
   value: undefined | string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   helperText?: string;
