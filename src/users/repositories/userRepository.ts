@@ -1,9 +1,9 @@
 import { rest } from "../../core/services/rest";
 import { readDoc } from "../../core/services/rest.utils";
-import { User } from "../domain/User";
+import { User, UserType } from "../domain/User";
 
 export const userRepository = {
-  create: async (user: any) => {
+  create: async (user: Partial<UserType>) => {
     const res = await rest.post("/users", { body: user });
     const json = await res.json();
     const rawUser = readDoc(json);

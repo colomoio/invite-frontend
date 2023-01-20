@@ -11,17 +11,7 @@ import { useSignUpForm } from "./useSignUpForm";
 
 /**
  * @TODO
- * 1. Add validation for each field
- *  - Email
- *  - Nickname (min 1 chars)
- *  - Password (min 8 chars)
- *  - Confirm Password (matches password)
- *  - Submit button is disabled until all fields are valid
- *  - Show error messages for each field
- * 2. Add a submit handler
- * 3. Display request status (loading, error, success)
- *  - Show error message if request fails
- *  - Redirect user to TODO
+ *  - Redirect user to /profile
  *
  * @TOMORROW: Talk about components in Chakra UI
  */
