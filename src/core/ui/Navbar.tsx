@@ -6,6 +6,7 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 export function Navbar() {
@@ -53,6 +54,7 @@ export function Navbar() {
               fontSize="lg"
               fontWeight="medium"
               textColor="white"
+              as={NextLink}
               href="/"
               _hover={{
                 transform: "scale(1.1)",
@@ -65,6 +67,7 @@ export function Navbar() {
               fontSize="lg"
               fontWeight="medium"
               textColor="white"
+              as={NextLink}
               href="/create"
               _hover={{
                 transform: "scale(1.1)",
